@@ -3,7 +3,7 @@ import QtQuick.Layouts 1.12
 
 import "../SeatControls"
 
-Rectangle{
+Item{
     id: seatSaves
     height: heightRatio * 2
 
@@ -14,8 +14,6 @@ Rectangle{
         left: parent.left
         right: parent.right
     }
-
-    color: "green"
 
     RowLayout{
         anchors.fill: parent

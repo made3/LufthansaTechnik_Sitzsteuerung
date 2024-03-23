@@ -14,7 +14,7 @@ Button {
         left: parent.left
         right: parent.right
 
-        margins: 5
+//        margins: 5
     }
 
     text: saveItem.buttonId

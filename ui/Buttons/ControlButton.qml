@@ -1,31 +1,33 @@
 import QtQuick 2.0
 import QtQuick.Controls 2.5
+import '.'
+import QtGraphicalEffects 1.0
 
 Button {
     id: controlButton
 
     property bool leftButton
 
-    property color backgroundColor: "yellow"
+    property color backgroundColor: "#b4b7bf"
     property color backgroundColorPressed: Qt.darker(backgroundColor, 1.2)
 
     property string buttonImage: {
         switch(seatControls.selectedPart){
         case 1: // Headrest
-            leftButton ? "qrc:/ui/Icons/ArrowDown.svg" : "qrc:/ui/Icons/ArrowUp.svg"
+            leftButton ? "Icons/ArrowDown.png" : "Icons/ArrowUp.png"
             break
         case 2: // Backrest
-            leftButton ? "qrc:/ui/Icons/ArrowLeft.svg" : "qrc:/ui/Icons/ArrowRight.svg"
+            leftButton ? "Icons/ArrowLeft.png" : "Icons/ArrowRight.png"
             break
         case 3: // Seat
-            leftButton ? "qrc:/ui/Icons/ArrowDown.svg" : "qrc:/ui/Icons/ArrowUp.svg"
+            leftButton ? "Icons/ArrowDown.png" : "Icons/ArrowUp.png"
             break
         case 4: // Footrest
-            leftButton ? "qrc:/ui/Icons/ArrowLeft.svg" : "qrc:/ui/Icons/ArrowRight.svg"
+            leftButton ? "Icons/ArrowLeft.png" : "Icons/ArrowRight.png"
             break
         case 0: // None
         default:
-            "qrc:/ui/Icons/ArrowUp.svg"
+            ""
             break
         }
     }
@@ -34,16 +36,40 @@ Button {
     onReleased: leftButton ? leftButtonTimer.stop() : rightButtonTimer.stop()
 
 
-    background: Rectangle{
-        color: controlButton.down ? controlButton.backgroundColorPressed : controlButton.backgroundColor
-        radius: 4
 
-        Image{
-            anchors.fill: parent
-            anchors.margins: 10
-            source: buttonImage
+    LinearGradient {
+        anchors.fill: parent
+        source: roundedRect
+        start: Qt.point(width, 0)
+        end: Qt.point(0, height)
+        gradient: Gradient {
+            GradientStop { position: 1.0; color: controlButton.down ? controlButton.backgroundColorPressed : controlButton.backgroundColor }
+            GradientStop { position: 0.0; color: controlButton.down ? Qt.lighter(controlButton.backgroundColorPressed, 2): Qt.lighter(controlButton.backgroundColor, 2) }
         }
     }
+
+    background: Rectangle{
+        id: roundedRect
+        radius: 4
+    }
+
+    Image{
+        anchors.fill: parent
+        anchors.margins: 10
+        source: buttonImage
+    }
+
+
+//    background: Rectangle{
+//        color: controlButton.down ? controlButton.backgroundColorPressed : controlButton.backgroundColor
+//        radius: 50
+
+//        Image{
+//            anchors.fill: parent
+//            anchors.margins: 10
+//            source: buttonImage
+//        }
+//    }
 
 
     Timer{

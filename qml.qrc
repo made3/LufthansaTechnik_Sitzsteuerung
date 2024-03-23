@@ -5,15 +5,16 @@
         <file>ui/SeatControls/SeatControls.qml</file>
         <file>ui/SeatSaves/SeatSaves.qml</file>
         <file>ui/Buttons/ControlButton.qml</file>
-        <file>ui/Icons/ArrowUp.svg</file>
-        <file>ui/Icons/ArrowDown.svg</file>
-        <file>ui/Icons/ArrowLeft.svg</file>
-        <file>ui/Icons/ArrowRight.svg</file>
         <file>ui/SeatControls/SeatControlsInformation.qml</file>
         <file>ui/Buttons/SeatPartButton.qml</file>
         <file>ui/Settings/GlobalSettings.qml</file>
         <file>ui/SeatSaves/SaveItem.qml</file>
         <file>ui/Buttons/SaveTopButton.qml</file>
         <file>ui/Buttons/SaveBottomButton.qml</file>
+        <file>ui/Buttons/Icons/ArrowDown.png</file>
+        <file>ui/Buttons/Icons/ArrowLeft.png</file>
+        <file>ui/Buttons/Icons/ArrowRight.png</file>
+        <file>ui/Buttons/Icons/ArrowUp.png</file>
+        <file>ui/Buttons/Icons/Save.png</file>
     </qresource>
 </RCC>

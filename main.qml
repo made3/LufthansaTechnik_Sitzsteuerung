@@ -3,6 +3,7 @@ import QtQuick.Window 2.12
 import "ui/Seat"
 import "ui/SeatControls"
 import "ui/SeatSaves"
+import '.'
 
 Window {
     id: mainWindow

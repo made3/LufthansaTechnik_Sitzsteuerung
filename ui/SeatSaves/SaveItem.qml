@@ -6,10 +6,15 @@ Item{
     id: saveItem
 
     width: seatSaves.height * 0.7
-    height: parent.height
+    height: seatSaves.height
 
     property int buttonId: 0
 
+    Layout.minimumWidth: saveItem.width
+    Layout.preferredWidth: saveItem.width
+    Layout.maximumWidth: saveItem.width
+
+    Layout.fillHeight: true
     Layout.alignment: Qt.AlignHCenter
 
     // Initialize save values with default values

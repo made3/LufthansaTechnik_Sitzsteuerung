@@ -21,7 +21,7 @@ Rectangle {
                 break
             case 0: // None
             default:
-                "FOOTREST"
+                "SELECT\nSEATPART"
                 break
             }
         }
@@ -66,7 +66,7 @@ Rectangle {
                 break
             case 0: // None
             default:
-                "100"
+                ""
                 break
             }
         }
