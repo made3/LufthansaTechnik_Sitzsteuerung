@@ -1,0 +1,16 @@
+<RCC>
+    <qresource prefix="/">
+        <file>main.qml</file>
+        <file>ui/Seat/Seat.qml</file>
+        <file>ui/SeatControls/SeatControls.qml</file>
+        <file>ui/SeatSaves/SeatSaves.qml</file>
+        <file>ui/Buttons/ControlButton.qml</file>
+        <file>ui/Icons/ArrowUp.svg</file>
+        <file>ui/Icons/ArrowDown.svg</file>
+        <file>ui/Icons/ArrowLeft.svg</file>
+        <file>ui/Icons/ArrowRight.svg</file>
+        <file>ui/SeatControls/SeatControlsInformation.qml</file>
+        <file>ui/Buttons/SeatPartButton.qml</file>
+        <file>ui/Settings/GlobalSettings.qml</file>
+    </qresource>
+</RCC>
