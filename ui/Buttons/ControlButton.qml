@@ -43,7 +43,6 @@ Button {
             anchors.margins: 10
             source: buttonImage
         }
-
     }
 
 

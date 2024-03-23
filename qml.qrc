@@ -12,5 +12,8 @@
         <file>ui/SeatControls/SeatControlsInformation.qml</file>
         <file>ui/Buttons/SeatPartButton.qml</file>
         <file>ui/Settings/GlobalSettings.qml</file>
+        <file>ui/SeatSaves/SaveItem.qml</file>
+        <file>ui/Buttons/SaveTopButton.qml</file>
+        <file>ui/Buttons/SaveBottomButton.qml</file>
     </qresource>
 </RCC>

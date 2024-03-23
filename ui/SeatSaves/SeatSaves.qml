@@ -1,10 +1,13 @@
 import QtQuick 2.0
-import QtQuick.Controls 2.5
+import QtQuick.Layouts 1.12
+
 import "../SeatControls"
 
 Rectangle{
     id: seatSaves
     height: heightRatio * 2
+
+    property int buttonCount: 4
 
     anchors{
         top: parent.top
@@ -13,5 +16,20 @@ Rectangle{
     }
 
     color: "green"
+
+    RowLayout{
+        anchors.fill: parent
+        anchors.horizontalCenter: parent.horizontalCenter
+
+
+        Repeater{
+            model: buttonCount
+            SaveItem{
+                buttonId: index + 1
+            }
+        }
+
+
+    }
 
 }
