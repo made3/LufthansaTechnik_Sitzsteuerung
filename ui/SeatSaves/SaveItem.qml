@@ -30,7 +30,6 @@ Item{
         saveItem.savedFootrestAngle = globalSettings.footrestAngle
     }
 
-
     // topButton
     SaveTopButton{
         id: topButton
@@ -40,7 +39,6 @@ Item{
     SaveBottomButton{
         id: bottomButton
     }
-
 }
 
 

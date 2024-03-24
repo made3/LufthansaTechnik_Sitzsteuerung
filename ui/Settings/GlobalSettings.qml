@@ -1,13 +1,13 @@
 import QtQuick 2.0
 
 Item {
-    property real headrestHeight: 40
+    property real headrestHeight: 20
     property real headrestMin: 0 // degree
     property real headrestMax: 75 // degree
 
-    property real backrestAngle: -0
-    property real backrestMin: -75 // mm
-    property real backrestMax: 0 // mm
+    property real backrestAngle: 90
+    property real backrestMin: 0 // mm
+    property real backrestMax: 90 // mm
 
     property real seatHardness: 0
     property real seatMin: 0 // percent
@@ -28,4 +28,8 @@ Item {
 
     property int selectedPart: GlobalSettings.SeatPart.None
 
+
+    function headrestToPercent(currentHeight){
+        return (currentHeight - globalSettings.headrestMin) / (globalSettings.headrestMax - globalSettings.headrestMin)
+    }
 }

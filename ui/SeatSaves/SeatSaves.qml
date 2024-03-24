@@ -26,8 +26,5 @@ Item{
                 buttonId: index + 1
             }
         }
-
-
     }
-
 }

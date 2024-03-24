@@ -3,10 +3,9 @@ import QtQuick.Controls 2.5
 import QtGraphicalEffects 1.0
 
 Button {
-//    height: seatSaves.height - topButton.height
     width: bottomButton.height
 
-    property color backgroundColor: "#b4b7bf"
+    property color backgroundColor: "#cccfd9"
     property color backgroundColorPressed: Qt.darker(backgroundColor, 1.2)
 
 

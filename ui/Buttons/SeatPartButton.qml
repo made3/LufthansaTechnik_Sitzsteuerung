@@ -8,10 +8,9 @@ Button {
     property color usedColor: "white"
 
     background: Rectangle {
-//        opacity: enabled ? 1 : 0.3
         color: seatPartButton.down ? Qt.darker(usedColor, 1.2) : usedColor
-//        border.width: 1
-        radius: seatPartsRect.width/50
+        border.width: seat.width/640 // On full scale (640px) border width is 1. This way it scaled according to scale
+        radius: 100
     }
 }
 

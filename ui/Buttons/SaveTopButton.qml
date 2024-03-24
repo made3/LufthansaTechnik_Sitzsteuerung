@@ -5,9 +5,8 @@ import "../Settings"
 
 Button {
     id: saveTopButton
-    property color backgroundColor: "yellow"
+    property color backgroundColor: "#a5a9ad"
     property color backgroundColorPressed: Qt.darker(backgroundColor, 1.2)
-
 
     height: parent.width
 
@@ -18,34 +17,42 @@ Button {
     }
 
     Seat{
-        id: testSeat
         fixedPositions: true
         anchors.fill: parent
+        anchors.topMargin: 20
 
         fixedHeadrestHeight: saveItem.savedHeadrestHeight
         fixedBackrestAngle: saveItem.savedBackrestAngle
         fixedSeatHardness: saveItem.savedSeatHardness
         fixedFootrestAngle: saveItem.savedFootrestAngle
-
     }
 
-//    Text{
-//        text: "SAVED\nPOSITION\n\n" + saveItem.buttonId
+    Text{
+        text: "SAVE " + saveItem.buttonId
 
-//        horizontalAlignment: Text.AlignHCenter
-//        verticalAlignment: Text.AlignVCenter
-//        fontSizeMode: Text.Fit
-//        minimumPixelSize: 4
+        height: parent.height * 0.2
 
-//        font{
-//            family: "MS UI Gothic"
-//            pointSize: 72
-//        }
+        horizontalAlignment: Text.AlignHCenter
+        verticalAlignment: Text.AlignTop
+        fontSizeMode: Text.Fit
+        minimumPixelSize: 4
 
-//        color: "black"
+        font{
+            family: "MS UI Gothic"
+            pointSize: 72
+            bold: true
+        }
 
-//        anchors.fill: saveTopButton
-//    }
+        color: "black"
+
+        anchors{
+            top: parent.top
+            left: parent.left
+            right: parent.right
+
+            topMargin: 5
+        }
+    }
 
 
     background: Rectangle{

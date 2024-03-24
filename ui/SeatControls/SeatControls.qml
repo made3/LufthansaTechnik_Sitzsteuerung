@@ -6,36 +6,16 @@ import "../Settings"
 Rectangle{
     id: seatControls
 
-//    enum SeatPart {
-//        None,
-//        Headrest,
-//        Backrest,
-//        Seat,
-//        Footrest
-//    }
-
-//    property int selectedPart: SeatControls.SeatPart.None
-
-
     anchors{
         top: seat.bottom
         left: parent.left
         right: parent.right
         bottom: parent.bottom
+
+        bottomMargin: 10
     }
 
     color: "transparent"
-
-
-
-    // DEBUG
-    Keys.onDigit1Pressed: selectedPart = GlobalSettings.SeatPart.None
-    Keys.onDigit2Pressed: selectedPart = GlobalSettings.SeatPart.Headrest
-    Keys.onDigit3Pressed: selectedPart = GlobalSettings.SeatPart.Backrest
-    Keys.onDigit4Pressed: selectedPart = GlobalSettings.SeatPart.Seat
-    Keys.onDigit5Pressed: selectedPart = GlobalSettings.SeatPart.Footrest
-
-
 
     RowLayout{
         id: buttonLayout
@@ -46,6 +26,7 @@ Rectangle{
             top: seatControls.top
             bottom: seatControls.bottom
             horizontalCenter: parent.horizontalCenter
+
         }
 
         // Left Button
