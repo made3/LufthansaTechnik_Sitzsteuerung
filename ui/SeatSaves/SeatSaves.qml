@@ -18,7 +18,7 @@ Item{
     RowLayout{
         anchors.fill: parent
         anchors.horizontalCenter: parent.horizontalCenter
-
+        anchors.topMargin: 10
 
         Repeater{
             model: buttonCount

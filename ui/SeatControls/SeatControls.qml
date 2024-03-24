@@ -1,19 +1,20 @@
 import QtQuick 2.0
 import QtQuick.Layouts 1.12
 import "../Buttons"
+import "../Settings"
 
 Rectangle{
     id: seatControls
 
-    enum SeatPart {
-        None,
-        Headrest,
-        Backrest,
-        Seat,
-        Footrest
-    }
+//    enum SeatPart {
+//        None,
+//        Headrest,
+//        Backrest,
+//        Seat,
+//        Footrest
+//    }
 
-    property int selectedPart: SeatControls.SeatPart.None
+//    property int selectedPart: SeatControls.SeatPart.None
 
 
     anchors{
@@ -28,11 +29,11 @@ Rectangle{
 
 
     // DEBUG
-    Keys.onDigit1Pressed: selectedPart = SeatControls.SeatPart.None
-    Keys.onDigit2Pressed: selectedPart = SeatControls.SeatPart.Headrest
-    Keys.onDigit3Pressed: selectedPart = SeatControls.SeatPart.Backrest
-    Keys.onDigit4Pressed: selectedPart = SeatControls.SeatPart.Seat
-    Keys.onDigit5Pressed: selectedPart = SeatControls.SeatPart.Footrest
+    Keys.onDigit1Pressed: selectedPart = GlobalSettings.SeatPart.None
+    Keys.onDigit2Pressed: selectedPart = GlobalSettings.SeatPart.Headrest
+    Keys.onDigit3Pressed: selectedPart = GlobalSettings.SeatPart.Backrest
+    Keys.onDigit4Pressed: selectedPart = GlobalSettings.SeatPart.Seat
+    Keys.onDigit5Pressed: selectedPart = GlobalSettings.SeatPart.Footrest
 
 
 

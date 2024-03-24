@@ -6,7 +6,7 @@ Rectangle {
     Text{
         id: controlType
         text:{
-            switch(seatControls.selectedPart){
+            switch(globalSettings.selectedPart){
             case 1: // Headrest
                 "HEADREST"
                 break
@@ -51,18 +51,18 @@ Rectangle {
     Text{
         id: controlValue
         text:{
-            switch(seatControls.selectedPart){
+            switch(globalSettings.selectedPart){
             case 1: // Headrest
-                Math.abs(Math.round(headrestHeight)) // Round to get natural number and take absolute value because positive value is better to read
+                Math.abs(Math.round(globalSettings.headrestHeight)) // Round to get natural number and take absolute value because positive value is better to read
                 break
             case 2: // Backrest
-                Math.abs(Math.round(backrestAngle)) // Round to get natural number and take absolute value because positive value is better to read
+                Math.abs(Math.round(globalSettings.backrestAngle)) // Round to get natural number and take absolute value because positive value is better to read
                 break
             case 3: // Seat
-                Math.abs(Math.round(seatHardness)) // Round to get natural number and take absolute value because positive value is better to read
+                Math.abs(Math.round(globalSettings.seatHardness)) // Round to get natural number and take absolute value because positive value is better to read
                 break
             case 4: // Footrest
-                Math.abs(Math.round(footrestAngle)) // Round to get natural number and take absolute value because positive value is better to read
+                Math.abs(Math.round(globalSettings.footrestAngle)) // Round to get natural number and take absolute value because positive value is better to read
                 break
             case 0: // None
             default:

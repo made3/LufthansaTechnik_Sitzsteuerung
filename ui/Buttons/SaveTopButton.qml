@@ -1,8 +1,10 @@
-import QtQuick 2.0
+ import QtQuick 2.0
 import QtQuick.Controls 2.5
+import "../Seat"
+import "../Settings"
 
 Button {
-
+    id: saveTopButton
     property color backgroundColor: "yellow"
     property color backgroundColorPressed: Qt.darker(backgroundColor, 1.2)
 
@@ -13,28 +15,51 @@ Button {
         top: parent.top
         left: parent.left
         right: parent.right
-
-//        margins: 5
     }
 
-    text: saveItem.buttonId
+    Seat{
+        id: testSeat
+        fixedPositions: true
+        anchors.fill: parent
+
+        fixedHeadrestHeight: saveItem.savedHeadrestHeight
+        fixedBackrestAngle: saveItem.savedBackrestAngle
+        fixedSeatHardness: saveItem.savedSeatHardness
+        fixedFootrestAngle: saveItem.savedFootrestAngle
+
+    }
+
+//    Text{
+//        text: "SAVED\nPOSITION\n\n" + saveItem.buttonId
+
+//        horizontalAlignment: Text.AlignHCenter
+//        verticalAlignment: Text.AlignVCenter
+//        fontSizeMode: Text.Fit
+//        minimumPixelSize: 4
+
+//        font{
+//            family: "MS UI Gothic"
+//            pointSize: 72
+//        }
+
+//        color: "black"
+
+//        anchors.fill: saveTopButton
+//    }
+
 
     background: Rectangle{
         color: topButton.down ? topButton.backgroundColorPressed : topButton.backgroundColor
         radius: 4
 
-//        Image{
-//            anchors.fill: parent
-//            anchors.margins: 10
-//            source: buttonImage
-//        }
+
     }
 
     onClicked: {
         // Save current values
-        headrestHeight = saveItem.savedHeadrestHeight
-        backrestAngle = saveItem.savedBackrestAngle
-        seatHardness = saveItem.savedSeatHardness
-        footrestAngle = saveItem.savedFootrestAngle
+        globalSettings.headrestHeight = saveItem.savedHeadrestHeight
+        globalSettings.backrestAngle = saveItem.savedBackrestAngle
+        globalSettings.seatHardness = saveItem.savedSeatHardness
+        globalSettings.footrestAngle = saveItem.savedFootrestAngle
     }
 }

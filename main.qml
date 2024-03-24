@@ -4,7 +4,7 @@ import "ui/Seat"
 import "ui/SeatControls"
 import "ui/SeatSaves"
 import '.'
-
+import "ui/Settings"
 Window {
     id: mainWindow
     visible: true
@@ -40,24 +40,28 @@ Window {
 //    property real footrestMax: 90 // degree
 
 
-    property real headrestHeight: 20
-    property real headrestMin: 20 // mm
-    property real headrestMax: 100 // mm
+//    property real headrestHeight: 20
+//    property real headrestMin: 20 // mm
+//    property real headrestMax: 100 // mm
 
-    property real backrestAngle: 0
-    property real backrestMin: -75 // degree
-    property real backrestMax: 0 // degree
+//    property real backrestAngle: 0
+//    property real backrestMin: -75 // degree
+//    property real backrestMax: 0 // degree
 
-    property real seatHardness: 0
-    property real seatMin: 0 // percent
-    property real seatMax: 100 // percent
+//    property real seatHardness: 0
+//    property real seatMin: 0 // percent
+//    property real seatMax: 100 // percent
 
-    property real footrestAngle: 90
-    property real footrestMin: 0 // degree
-    property real footrestMax: 90 // degree
+//    property real footrestAngle: 90
+//    property real footrestMin: 0 // degree
+//    property real footrestMax: 90 // degree
 
-    function headrestToPercent(){
-        return (headrestHeight - headrestMin) / (headrestMax - headrestMin)
+    function headrestToPercent(currentHeight){
+        return (currentHeight - globalSettings.headrestMin) / (globalSettings.headrestMax - globalSettings.headrestMin)
+    }
+
+    GlobalSettings{
+        id: globalSettings
     }
 
 
@@ -68,6 +72,11 @@ Window {
 
     Seat{
         id: seat
+        anchors{
+            top: seatSaves.bottom
+            left: parent.left
+            right: parent.right
+        }
     }
 
     SeatControls{

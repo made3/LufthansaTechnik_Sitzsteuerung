@@ -3,17 +3,33 @@ import QtGraphicalEffects 1.0
 
 import "../Buttons"
 import "../SeatControls"
+import "../Settings"
 
 Rectangle{
     id: seat
     height: heightRatio * 7
     color: "transparent"
 
-    anchors{
-        top: seatSaves.bottom
-        left: parent.left
-        right: parent.right
-    }
+    // Save positions and make it not interactable
+    property bool fixedPositions: false
+    enabled: !fixedPositions
+
+
+
+    property real fixedHeadrestHeight
+    property real fixedBackrestAngle
+    property real fixedSeatHardness
+    property real fixedFootrestAngle
+
+
+
+
+
+//    anchors{
+//        top: seatSaves.bottom
+//        left: parent.left
+//        right: parent.right
+//    }
 
     // Rectangle that contains all seat parts. Centered in parent with margin and always same ratio
     Rectangle{
@@ -49,7 +65,7 @@ Rectangle{
             y: parent.height * 0.6
 
 
-            // Backrest and Headrest
+            // Backrest and Headrest. Headrest is child of Backrest to be rotated with backrest
             SeatPartButton{
                 id: backrestPartButton
 
@@ -62,11 +78,11 @@ Rectangle{
                 transform: Rotation {
                     origin.x: backrestPartButton.width / 2
                     origin.y: backrestPartButton.height - backrestPartButton.width / 2
-                    angle: backrestAngle
+                    angle: fixedPositions ? fixedBackrestAngle : globalSettings.backrestAngle
                 }
 
                 onClicked:{
-                    seatControls.selectedPart = SeatControls.SeatPart.Backrest
+                    globalSettings.selectedPart = GlobalSettings.SeatPart.Backrest
                 }
 
 
@@ -80,11 +96,10 @@ Rectangle{
                     property real baseHeight: -seatPartsRect.partPadding - height
 
                     x: backrestPartButton.width / 2 - width / 2
-                    y: baseHeight - mainWindow.headrestToPercent() * height / 4
-
+                    y: baseHeight - mainWindow.headrestToPercent(fixedPositions ? fixedHeadrestHeight : globalSettings.headrestHeight) * height / 4
 
                     onClicked: {
-                        seatControls.selectedPart = SeatControls.SeatPart.Headrest
+                        globalSettings.selectedPart = GlobalSettings.SeatPart.Headrest
                     }
                 }
             }
@@ -102,11 +117,11 @@ Rectangle{
                 transform: Rotation {
                     origin.x: footrestPartButton.height / 2
                     origin.y: footrestPartButton.height / 2
-                    angle: footrestAngle
+                    angle: fixedPositions ? fixedFootrestAngle : globalSettings.footrestAngle
                 }
 
                 onClicked: {
-                    seatControls.selectedPart = SeatControls.SeatPart.Footrest
+                    globalSettings.selectedPart = GlobalSettings.SeatPart.Footrest
                 }
             }
 
@@ -120,10 +135,10 @@ Rectangle{
                 width: seatPartsRect.height * 0.2 * seatPartsRect.seatScaleFactor
                 height: seatPartsRect.width * 0.055 * seatPartsRect.seatScaleFactor
 
-                usedColor: Qt.darker(baseColor, seatHardness / 10 * 0.5)
+                usedColor: Qt.darker(baseColor, fixedPositions ? fixedFootrestAngle : globalSettings.seatHardness / 10 * 0.5)
 
                 onClicked: {
-                    seatControls.selectedPart = SeatControls.SeatPart.Seat
+                    globalSettings.selectedPart = GlobalSettings.SeatPart.Seat
                 }
             }
 

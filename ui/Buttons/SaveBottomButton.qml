@@ -15,11 +15,9 @@ Button {
         bottom: parent.bottom
         horizontalCenter: parent.horizontalCenter
 
-        margins: 5
+        margins: 10
 
     }
-
-
 
     LinearGradient {
         anchors.fill: parent
@@ -44,9 +42,9 @@ Button {
     }
 
     onClicked: {
-        saveItem.savedHeadrestHeight = headrestHeight
-        saveItem.savedBackrestAngle = backrestAngle
-        saveItem.savedSeatHardness = seatHardness
-        saveItem.savedFootrestAngle = footrestAngle
+        saveItem.savedHeadrestHeight = globalSettings.headrestHeight
+        saveItem.savedBackrestAngle = globalSettings.backrestAngle
+        saveItem.savedSeatHardness = globalSettings.seatHardness
+        saveItem.savedFootrestAngle = globalSettings.footrestAngle
     }
 }

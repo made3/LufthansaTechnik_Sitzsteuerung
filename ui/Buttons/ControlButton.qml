@@ -12,7 +12,7 @@ Button {
     property color backgroundColorPressed: Qt.darker(backgroundColor, 1.2)
 
     property string buttonImage: {
-        switch(seatControls.selectedPart){
+        switch(globalSettings.selectedPart){
         case 1: // Headrest
             leftButton ? "Icons/ArrowDown.png" : "Icons/ArrowUp.png"
             break
@@ -32,11 +32,6 @@ Button {
         }
     }
 
-    onPressed: leftButton ? leftButtonTimer.start() : rightButtonTimer.start()
-    onReleased: leftButton ? leftButtonTimer.stop() : rightButtonTimer.stop()
-
-
-
     LinearGradient {
         anchors.fill: parent
         source: roundedRect
@@ -51,6 +46,7 @@ Button {
     background: Rectangle{
         id: roundedRect
         radius: 4
+        color: globalSettings.selectedPart == 0 ? "transparent" : "white"
     }
 
     Image{
@@ -59,23 +55,10 @@ Button {
         source: buttonImage
     }
 
-
-//    background: Rectangle{
-//        color: controlButton.down ? controlButton.backgroundColorPressed : controlButton.backgroundColor
-//        radius: 50
-
-//        Image{
-//            anchors.fill: parent
-//            anchors.margins: 10
-//            source: buttonImage
-//        }
-//    }
-
-
     Timer{
         id: leftButtonTimer
         interval: 10
-        running: false
+        running: leftButton ? controlButton.pressed : false
         repeat: true
 
         onTriggered: {
@@ -87,7 +70,7 @@ Button {
     Timer{
         id: rightButtonTimer
         interval: 10
-        running: false
+        running: leftButton ? false : controlButton.pressed
         repeat: true
 
         onTriggered: {
@@ -101,68 +84,68 @@ Button {
     function adjustControlValue(increase){
 
         if(increase){
-            switch(seatControls.selectedPart){
+            switch(globalSettings.selectedPart){
             case 1: // Headrest
-                normalizedDelta = Math.abs((headrestMax - headrestMin)) * percentPerTrigger // Delta: Decrease value for 0.001% of the value span with each timer trigger
-                if((headrestHeight - normalizedDelta) > headrestMax)
-                    headrestHeight = headrestMax
+                normalizedDelta = Math.abs((globalSettings.headrestMax - globalSettings.headrestMin)) * percentPerTrigger // Delta: Decrease value for 0.001% of the value span with each timer trigger
+                if((globalSettings.headrestHeight - normalizedDelta) > globalSettings.headrestMax)
+                    globalSettings.headrestHeight = globalSettings.headrestMax
                 else
-                    headrestHeight += normalizedDelta
+                    globalSettings.headrestHeight += normalizedDelta
                 break
             case 2: // Backrest
-                normalizedDelta = Math.abs((backrestMax - backrestMin)) * percentPerTrigger // Delta: Decrease value for 0.001% of the value span with each timer trigger
-                if((backrestAngle - normalizedDelta) > backrestMax)
-                    backrestAngle = backrestMax
+                normalizedDelta = Math.abs((globalSettings.backrestMax - globalSettings.backrestMin)) * percentPerTrigger // Delta: Decrease value for 0.001% of the value span with each timer trigger
+                if((globalSettings.backrestAngle - normalizedDelta) > globalSettings.backrestMax)
+                    globalSettings.backrestAngle = globalSettings.backrestMax
                 else
-                    backrestAngle += normalizedDelta
+                    globalSettings.backrestAngle += normalizedDelta
                 break
             case 3: // Seat
-                normalizedDelta = Math.abs((seatMax - seatMin)) * percentPerTrigger // Delta: Decrease value for 0.001% of the value span with each timer trigger
-                if((seatHardness - normalizedDelta) > seatMax)
-                    seatHardness = seatMax
+                normalizedDelta = Math.abs((globalSettings.seatMax - globalSettings.seatMin)) * percentPerTrigger // Delta: Decrease value for 0.001% of the value span with each timer trigger
+                if((globalSettings.seatHardness - normalizedDelta) > globalSettings.seatMax)
+                    globalSettings.seatHardness = globalSettings.seatMax
                 else
-                    seatHardness += normalizedDelta
+                    globalSettings.seatHardness += normalizedDelta
                 break
             case 4: // Footrest
-                normalizedDelta = Math.abs((footrestMax - footrestMin)) * percentPerTrigger // Delta: Decrease value for 0.001% of the value span with each timer trigger
-                if((footrestAngle - normalizedDelta) > footrestMax)
-                    footrestAngle = footrestMax
+                normalizedDelta = Math.abs((globalSettings.footrestMax - globalSettings.footrestMin)) * percentPerTrigger // Delta: Decrease value for 0.001% of the value span with each timer trigger
+                if((globalSettings.footrestAngle - normalizedDelta) > globalSettings.footrestMax)
+                    globalSettings.footrestAngle = globalSettings.footrestMax
                 else
-                    footrestAngle += normalizedDelta
+                    globalSettings.footrestAngle += normalizedDelta
                 break
             case 0: // None
             default:
                 break
             }
         }else{
-            switch(seatControls.selectedPart){
+            switch(globalSettings.selectedPart){
             case 1: // Headrest
-                normalizedDelta = Math.abs((headrestMax - headrestMin)) * percentPerTrigger // Delta: Decrease value for 0.001% of the value span with each timer trigger
-                if((headrestHeight - normalizedDelta) < headrestMin)
-                    headrestHeight = headrestMin
+                normalizedDelta = Math.abs((globalSettings.headrestMax - globalSettings.headrestMin)) * percentPerTrigger // Delta: Decrease value for 0.001% of the value span with each timer trigger
+                if((globalSettings.headrestHeight - normalizedDelta) < globalSettings.headrestMin)
+                    globalSettings.headrestHeight = globalSettings.headrestMin
                 else
-                    headrestHeight -= normalizedDelta
+                    globalSettings.headrestHeight -= normalizedDelta
                 break
             case 2: // Backrest
-                normalizedDelta = Math.abs((backrestMax - backrestMin)) * percentPerTrigger // Delta: Decrease value for 0.001% of the value span with each timer trigger
-                if((backrestAngle - normalizedDelta) < backrestMin)
-                    backrestAngle = backrestMin
+                normalizedDelta = Math.abs((globalSettings.backrestMax - globalSettings.backrestMin)) * percentPerTrigger // Delta: Decrease value for 0.001% of the value span with each timer trigger
+                if((globalSettings.backrestAngle - normalizedDelta) < globalSettings.backrestMin)
+                    globalSettings.backrestAngle = globalSettings.backrestMin
                 else
-                    backrestAngle -= normalizedDelta
+                    globalSettings.backrestAngle -= normalizedDelta
                 break
             case 3: // Seat
-                normalizedDelta = Math.abs((seatMax - seatMin)) * percentPerTrigger // Delta: Decrease value for 0.001% of the value span with each timer trigger
-                if((seatHardness - normalizedDelta) < seatMin)
-                    seatHardness = seatMin
+                normalizedDelta = Math.abs((globalSettings.seatMax - globalSettings.seatMin)) * percentPerTrigger // Delta: Decrease value for 0.001% of the value span with each timer trigger
+                if((globalSettings.seatHardness - normalizedDelta) < globalSettings.seatMin)
+                    globalSettings.seatHardness = globalSettings.seatMin
                 else
-                    seatHardness -= normalizedDelta
+                    globalSettings.seatHardness -= normalizedDelta
                 break
             case 4: // Footrest
-                normalizedDelta = Math.abs((footrestMax - footrestMin)) * percentPerTrigger // Delta: Decrease value for 0.001% of the value span with each timer trigger
-                if((footrestAngle - normalizedDelta) < footrestMin)
-                    footrestAngle = footrestMin
+                normalizedDelta = Math.abs((globalSettings.footrestMax - globalSettings.footrestMin)) * percentPerTrigger // Delta: Decrease value for 0.001% of the value span with each timer trigger
+                if((globalSettings.footrestAngle - normalizedDelta) < globalSettings.footrestMin)
+                    globalSettings.footrestAngle = globalSettings.footrestMin
                 else
-                    footrestAngle -= normalizedDelta
+                    globalSettings.footrestAngle -= normalizedDelta
                 break
             case 0: // None
             default:

@@ -5,7 +5,7 @@ import "../Buttons"
 Item{
     id: saveItem
 
-    width: seatSaves.height * 0.7
+    width: seatSaves.height * 0.65
     height: seatSaves.height
 
     property int buttonId: 0
@@ -18,16 +18,16 @@ Item{
     Layout.alignment: Qt.AlignHCenter
 
     // Initialize save values with default values
-    property real savedHeadrestHeight: headrestHeight
-    property real savedBackrestAngle: backrestAngle
-    property real savedSeatHardness: seatHardness
-    property real savedFootrestAngle: footrestAngle
+    property real savedHeadrestHeight: globalSettings.headrestHeight
+    property real savedBackrestAngle: globalSettings.backrestAngle
+    property real savedSeatHardness: globalSettings.seatHardness
+    property real savedFootrestAngle: globalSettings.footrestAngle
 
     Component.onCompleted: {
-        saveItem.savedHeadrestHeight = headrestHeight
-        saveItem.savedBackrestAngle = backrestAngle
-        saveItem.savedSeatHardness = seatHardness
-        saveItem.savedFootrestAngle = footrestAngle
+        saveItem.savedHeadrestHeight = globalSettings.headrestHeight
+        saveItem.savedBackrestAngle = globalSettings.backrestAngle
+        saveItem.savedSeatHardness = globalSettings.seatHardness
+        saveItem.savedFootrestAngle = globalSettings.footrestAngle
     }
 
 
